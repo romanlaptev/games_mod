@@ -1958,6 +1958,8 @@ Com_Init
 void Com_Init( char *commandLine ) {
 	char    *s;
 
+Com_Printf( "--- void Com_Init !!!!! ---\n" );
+
 	Com_Printf( "%s %s %s\n", Q3_VERSION, CPUSTRING, __DATE__ );
 
 	if ( setjmp( abortframe ) ) {

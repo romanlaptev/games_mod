@@ -1,0 +1,28 @@
+START APP
+
+src\win32\win_main.c
+	int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow ) {
+........	
+	Com_Init( sys_cmdline );
+........
+	// run the game
+	Com_Frame();
+	
+
+src\qcommon\common.c
+	void Com_Init( char *commandLine ) {
+......
+		FS_InitFilesystem();
+		
+src\qcommon\files.c		
+
+	void FS_InitFilesystem( void ) {
+...........
+	// if we can't find default.cfg, assume that the paths are
+	// busted and error out now, rather than getting an unreadable
+	// graphics screen when the font fails to load
+	if ( FS_ReadFile( "default.cfg", NULL ) <= 0 ) {
+		Com_Error( ERR_FATAL, "Couldn't load default.cfg (src\qcommon\files.c, void FS_InitFilesystem( void )" );
+	}
+
+	
